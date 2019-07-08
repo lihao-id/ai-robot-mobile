@@ -1,7 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { addCount, subtractCount } from "store/user-list/action";
+import { connect } from "react-redux";
+import "./css/list.scss";
 
-export default function List({ history }) {
+function List({ count, addCount, subtractCount }) {
   const userList = [
     {
       id: 1,
@@ -28,6 +31,23 @@ export default function List({ history }) {
             </li>
           ))}
       </ul>
+      <div className="count">{count.value}</div>
+      <button className="subtract" onClick={subtractCount}>
+        -
+      </button>
+      <button className="add" onClick={addCount}>
+        +
+      </button>
     </div>
   );
 }
+
+export default connect(
+  state => ({
+    count: state.count
+  }),
+  {
+    addCount,
+    subtractCount
+  }
+)(List);

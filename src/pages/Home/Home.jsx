@@ -9,7 +9,7 @@ import {
 
 import User from "pages/User/User";
 import Goods from "pages/Goods/Goods";
-import Counter from "pages/Counter/Counter";
+
 export default function Home({ match }) {
   return (
     <Router>
@@ -25,9 +25,6 @@ export default function Home({ match }) {
                 <li>
                   <NavLink to="/goods/list">GoodsList</NavLink>
                 </li>
-                <li>
-                  <NavLink to="/counter">Counter</NavLink>
-                </li>
               </ul>
             </nav>
           </div>
@@ -36,7 +33,6 @@ export default function Home({ match }) {
               <Route path="/user/list" component={User.List} />
               <Route path="/user/:id" component={User.Info} />
               <Route path="/goods/list" component={Goods.List} />
-              <Route path="/counter" component={Counter} />
             </Switch>
           </div>
         </div>
