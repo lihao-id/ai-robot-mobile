@@ -2,7 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { addCount, subtractCount } from "store/user-list/action";
 import { connect } from "react-redux";
-import "./css/list.scss";
+import styled from "styled-components";
+// import "./css/list.scss";
 
 function List({ count, addCount, subtractCount }) {
   const userList = [
@@ -20,9 +21,13 @@ function List({ count, addCount, subtractCount }) {
     }
   ];
 
+  const TitleH2 = styled.h2`
+    color: green;
+  `;
+
   return (
-    <div className="UserList">
-      <h2>title-user-list</h2>
+    <div className="user-list">
+      <TitleH2>title-user-list</TitleH2>
       <ul>
         {userList &&
           userList.map(user => (
