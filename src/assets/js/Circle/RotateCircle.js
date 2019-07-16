@@ -13,8 +13,8 @@ var RotateCircle = function(opt) {
   Circle.call(this, opt);
 
   this.currentStart = opt.start;
-  if(!this.currentStart){
-      this.currentStart = 0;
+  if (!this.currentStart) {
+    this.currentStart = 0;
   }
   this.anticlockwise = opt.anticlockwise; //是否为逆时针
 };
@@ -22,7 +22,7 @@ var RotateCircle = function(opt) {
 RotateCircle.prototype = new Circle();
 
 RotateCircle.prototype._drawDone = function() {
-  this._draw(this.currentStart, this.currentStart + 100);
+  this._draw(this.currentStart, this.currentStart + this.length);
 };
 
 RotateCircle.prototype.rotate = function() {
@@ -31,12 +31,12 @@ RotateCircle.prototype.rotate = function() {
   interval(function() {
     //如果是顺时针
     if (_this.anticlockwise === false) {
-      _this.currentStart = _this.currentStart + 0.1;
+      _this.currentStart = (_this.currentStart + 0.1) % 100;
     } else {
       //如果是逆时针
-      _this.currentStart = _this.currentStart - 0.1;
+      _this.currentStart = (_this.currentStart - 0.1) % 100;
     }
-    _this._drawDone(_this.currentStart, 100);
+    _this._drawDone();
   }, 50);
 };
 

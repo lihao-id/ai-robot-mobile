@@ -16,12 +16,18 @@ var Circle = function(opt) {
   this.context = this.element.getContext("2d");
 
   this.start = opt.start;
-  if(!this.start){
-      this.start = 0;
+  if (!this.start) {
+    this.start = 0;
   }
-  this.end = this.start + 100;
 
-  this.n = this.start; //0 - 10
+  this.length = opt.length;
+  if (!this.length) {
+    this.length = 100;
+  }
+
+  this.end = this.start + this.length;
+
+  this.currentEnd = this.start; //0 - 10
 };
 
 Circle.prototype = {
@@ -30,9 +36,9 @@ Circle.prototype = {
     return ((n - 25) / 100) * Math.PI * 2;
   },
   canDraw() {
-    return this.n < this.end;
+    return this.currentEnd < this.end;
   },
-  _draw: function(start, n) {
+  _draw: function(start, end) {
     //初始化 context
     this.context.strokeStyle = this.color;
     this.context.lineWidth = this.lineWidth;
@@ -49,7 +55,7 @@ Circle.prototype = {
     this.context.clearRect(0, 0, 400, 400);
     this.context.beginPath();
     let startAngle = this._getAngle(start);
-    let endAngle = this._getAngle(n);
+    let endAngle = this._getAngle(end);
 
     this.context.arc(
       this.point.x,
@@ -60,6 +66,9 @@ Circle.prototype = {
       false
     );
     this.context.stroke();
+  },
+  drawDone: function() {
+    this._draw(this.start, this.start + this.length);
   },
   draw: function(time) {
     let _this = this;
@@ -75,17 +84,26 @@ Circle.prototype = {
 
       setTimeout(function() {
         //控制速度
-        if (_this.n >= _this.start && _this.n < _this.start + 25) {
+        if (
+          _this.currentEnd >= _this.start &&
+          _this.currentEnd < _this.start + 25
+        ) {
           time = (_time * 4) / 3;
-        } else if (_this.n >= _this.start + 25 && _this.n < _this.start + 50) {
+        } else if (
+          _this.currentEnd >= _this.start + 25 &&
+          _this.currentEnd < _this.start + 50
+        ) {
           time = (_time * 3) / 4;
-        } else if (_this.n >= _this.start + 50 && _this.n < _this.start + 75) {
+        } else if (
+          _this.currentEnd >= _this.start + 50 &&
+          _this.currentEnd < _this.start + 75
+        ) {
           time = _time;
         } else {
           time = time + 1;
         }
 
-        _this._draw(_this.start, ++_this.n);
+        _this._draw(_this.start, ++_this.currentEnd);
 
         f(time, _this);
       }, time);
