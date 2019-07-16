@@ -1,7 +1,6 @@
 import { createStore, combineReducers } from "redux";
 
-import * as userList from "./user-list/reducer";
-
-let store = createStore(combineReducers({ ...userList }));
+// let store = createStore(combineReducers({}));
+let store = createStore(() => {});
 
 export default store;
