@@ -1,20 +1,24 @@
 import React, { useRef, useEffect } from "react";
-import * as css from "./css/StyledCircle1";
+import * as css from "./css/Circle1";
+import Circle from "assets/js/Circle/Circle";
 import RotateCircle from "assets/js/Circle/RotateCircle";
 
 function Circle1({ opt, className }) {
   let ref = useRef(null);
 
-  let { width, height } = opt.Circle1;
+  let { width, height } = opt;
 
   useEffect(() => {
     let option = {
-      ...opt.Circle1,
+      ...opt,
       element: ref.current
     };
 
-    let circle = new RotateCircle(option);
-    circle.rotate();
+    let circle =
+      opt.anticlockwise !== undefined
+        ? new RotateCircle(option)
+        : new Circle(option);
+    circle.drawDone();
   });
   return (
     <css.StyledCircle1

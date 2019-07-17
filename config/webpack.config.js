@@ -275,6 +275,8 @@ module.exports = function(webpackEnv) {
         components: path.resolve(__dirname, "../src/components"),
         api: path.resolve(__dirname, "../src/api"),
         assets: path.resolve(__dirname, "../src/assets"),
+        // js: path.resolve(__dirname, "../src/assets/js"),
+        // css: path.resolve(__dirname, "../src/assets/css"),
         utils: path.resolve(__dirname, "../src/utils")
       },
       plugins: [

@@ -38,6 +38,10 @@ Circle.prototype = {
   canDraw() {
     return this.currentEnd < this.end;
   },
+  clear() {
+    //清除画板
+    this.context.clearRect(0, 0, this.point.x * 2, this.point.y * 2);
+  },
   _draw: function(start, end) {
     //初始化 context
     this.context.strokeStyle = this.color;
@@ -51,8 +55,6 @@ Circle.prototype = {
     if (this.lineDashOffset) {
       this.context.lineDashOffset = this.lineDashOffset;
     }
-    //清除画板
-    this.context.clearRect(0, 0, 400, 400);
     this.context.beginPath();
     let startAngle = this._getAngle(start);
     let endAngle = this._getAngle(end);
@@ -102,6 +104,9 @@ Circle.prototype = {
         } else {
           time = time + 1;
         }
+
+        //清除画板
+        this.clear();
 
         _this._draw(_this.start, ++_this.currentEnd);
 

@@ -1,5 +1,5 @@
 import React from "react";
-import * as css from "./css/StyledFrame";
+import * as css from "./css/Frame";
 
 import Main from "./FrameMain/FrameMain";
 

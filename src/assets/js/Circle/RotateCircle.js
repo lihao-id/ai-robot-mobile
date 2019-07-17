@@ -22,10 +22,12 @@ var RotateCircle = function(opt) {
 RotateCircle.prototype = new Circle();
 
 RotateCircle.prototype._drawDone = function() {
+  //清除画板
+  this.clear();
   this._draw(this.currentStart, this.currentStart + this.length);
 };
 
-RotateCircle.prototype.rotate = function() {
+RotateCircle.prototype.drawDone = function() {
   let _this = this;
 
   interval(function() {

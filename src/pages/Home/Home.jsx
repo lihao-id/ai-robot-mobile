@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import * as css from "./css/StyledHome";
+import * as css from "./css/Home";
 
 import Frame from "components/frame/Frame";
 
