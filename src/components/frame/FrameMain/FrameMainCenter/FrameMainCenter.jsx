@@ -3,6 +3,7 @@ import * as css from "./css/FrameMainCenter";
 
 import Circles from "./Circles/Circles";
 import Lines from "./Lines/Lines";
+import Titles from "./Titles/Titles";
 
 function FrameMainCenter({ className, width, height }) {
   return (
@@ -13,6 +14,7 @@ function FrameMainCenter({ className, width, height }) {
     >
       <Circles className="Item" width={width} height={height} />
       <Lines className="Item" width={width} height={height} />
+      <Titles className="Item" width={width} height={height} />
     </css.StyledFrameMainCenter>
   );
 }

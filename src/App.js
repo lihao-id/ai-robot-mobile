@@ -5,10 +5,12 @@ import store from "store/store";
 import { Provider } from "react-redux";
 
 import Home from "pages/Home/Home";
+import { GlobalStyle } from "assets/css/style/style";
 
 function App() {
   return (
     <Provider store={store}>
+      <GlobalStyle />
       <Router>
         <div className="App">
           <Switch>
