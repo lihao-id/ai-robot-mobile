@@ -1,6 +1,11 @@
-import React from "components/frame/FrameClose/node_modules/react";
+import React from "react";
 import * as css from "./css/StyledFrameClose";
+import FrameCloseMain from './FrameCloseMain/FrameCloseMain.jsx'
 
-export default () => {
-  return <css.StyledFrameClose />;
-};
+const FrameClose = (props) => {
+  return (<css.StyledFrameClose className="close">
+    <FrameCloseMain />
+  </css.StyledFrameClose>)
+}
+
+export default FrameClose
