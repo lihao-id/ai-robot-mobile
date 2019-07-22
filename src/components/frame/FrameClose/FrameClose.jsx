@@ -4,6 +4,8 @@ import * as css from "./css/FrameClose";
 import Rectangle from "./js/Rectangle";
 import Triangle from "./js/Triangle";
 
+import GlidingLine from "./GlidingLine/GlidingLine";
+
 export default function FrameClose({ className, width, height, color }) {
   let canvasRectangleRef = useRef(null);
   let canvasTriangleRef1 = useRef(null);
@@ -85,6 +87,7 @@ export default function FrameClose({ className, width, height, color }) {
         />
       </css.DownTriangleAnimate>
       <css.Text color={color}>关闭</css.Text>
+      <GlidingLine />
     </css.FrameClose>
   );
 }

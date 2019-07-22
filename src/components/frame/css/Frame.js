@@ -18,6 +18,7 @@ export const StyledFrame = styled.div`
   padding-top:50px;
   box-sizing:border-box;
   z-index:1000;
+  color: #46e5d4;
   >.Close{
     position:absolute;
     top:30px;

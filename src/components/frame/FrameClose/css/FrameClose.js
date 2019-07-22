@@ -13,6 +13,14 @@ export const FrameClose = styled.button`
   &:hover {
     cursor: pointer;
   }
+
+  .gliding-line {
+    position: absolute;
+    width: 42px;
+    padding-top: 4px;
+    overflow: hidden;
+    height: 4px;
+  }
 `;
 
 export const RectangleCanvas = styled.canvas`
