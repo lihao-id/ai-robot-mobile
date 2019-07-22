@@ -1,3 +1,5 @@
+import { delay } from "utils/Util";
+
 var Circle = function(opt) {
   if (!opt) {
     return;
@@ -70,49 +72,75 @@ Circle.prototype = {
     this.context.stroke();
   },
   drawDone: function() {
-    this._draw(this.start, this.start + this.length);
+    // this._draw(this.start, this.start + this.length);
+    this.draw();
   },
-  draw: function(time) {
-    let _this = this;
-    let _time = time;
-
-    (function f(time) {
-      if (_this.canDraw() === false) {
-        if (_this.afterDrawDone) {
-          _this.afterDrawDone();
-        }
-        return;
+  draw: async function(time) {
+    time = time ? time : 0.07;
+    while (this.canDraw()) {
+      //控制速度
+      if (this.currentEnd >= this.start && this.currentEnd < this.start + 25) {
+        time = (time * 4) / 3;
+      } else if (
+        this.currentEnd >= this.start + 25 &&
+        this.currentEnd < this.start + 50
+      ) {
+        time = (time * 3) / 4;
+      } else if (
+        this.currentEnd >= this.start + 50 &&
+        this.currentEnd < this.start + 75
+      ) {
+        time = time;
+      } else {
+        time = time + 1;
       }
 
-      setTimeout(function() {
-        //控制速度
-        if (
-          _this.currentEnd >= _this.start &&
-          _this.currentEnd < _this.start + 25
-        ) {
-          time = (_time * 4) / 3;
-        } else if (
-          _this.currentEnd >= _this.start + 25 &&
-          _this.currentEnd < _this.start + 50
-        ) {
-          time = (_time * 3) / 4;
-        } else if (
-          _this.currentEnd >= _this.start + 50 &&
-          _this.currentEnd < _this.start + 75
-        ) {
-          time = _time;
-        } else {
-          time = time + 1;
-        }
+      await delay(time);
+      this.clear();
+      this._draw(this.start, ++this.currentEnd);
+    }
 
-        //清除画板
-        this.clear();
+    if (this.afterDrawDone) {
+      this.afterDrawDone();
+    }
 
-        _this._draw(_this.start, ++_this.currentEnd);
+    // (function f(time) {
+    //   if (_this.canDraw() === false) {
+    //     if (_this.afterDrawDone) {
+    //       _this.afterDrawDone();
+    //     }
+    //     return;
+    //   }
 
-        f(time, _this);
-      }, time);
-    })();
+    //   setTimeout(function() {
+    //     //控制速度
+    //     if (
+    //       _this.currentEnd >= _this.start &&
+    //       _this.currentEnd < _this.start + 25
+    //     ) {
+    //       time = (_time * 4) / 3;
+    //     } else if (
+    //       _this.currentEnd >= _this.start + 25 &&
+    //       _this.currentEnd < _this.start + 50
+    //     ) {
+    //       time = (_time * 3) / 4;
+    //     } else if (
+    //       _this.currentEnd >= _this.start + 50 &&
+    //       _this.currentEnd < _this.start + 75
+    //     ) {
+    //       time = _time;
+    //     } else {
+    //       time = time + 1;
+    //     }
+
+    //     //清除画板
+    //     _this.clear();
+
+    //     _this._draw(_this.start, ++_this.currentEnd);
+
+    //     f(time, _this);
+    //   }, time);
+    // })();
   }
 };
 

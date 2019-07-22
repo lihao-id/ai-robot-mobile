@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import * as SpanKeyframes from "./SpanKeyframes";
 
 export const StyledTitles = styled.div`
   width: ${props => props.width}px;
@@ -14,9 +15,18 @@ export const TitleWrapper = styled.div`
   }
 `;
 
-const Text = css`
-  color: #00ffff;
+export const AnimateSpan = styled.span`
+  color: rgba(0, 0, 0, 0);
   display: block;
+  /* transform: translateX(-25px); */
+  animation-name: ${props => SpanKeyframes.keyframesIn(props)};
+  animation-duration: ${({ duration }) => duration}s;
+  animation-fill-mode: forwards;
+  animation-delay: ${({ delay }) => delay}s;
+`;
+
+const Text = css`
+  display: flex;
 `;
 
 const Title = css`
@@ -30,9 +40,16 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   ${Title}
+  > *:not(:first-child) {
+    margin-left: 4px;
+  }
 `;
 
-export const Url = styled.span`
+export const Url = styled.p`
   ${Text};
+  justify-content: flex-end;
   font-size: 14px;
+  > *:not(:first-child) {
+    margin-left: 2px;
+  }
 `;

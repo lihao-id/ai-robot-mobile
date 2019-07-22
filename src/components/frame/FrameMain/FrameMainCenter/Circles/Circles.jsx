@@ -6,6 +6,7 @@ import Circle2 from "./Circle2/Circle2";
 import Circle3 from "./Circle3/Circle3";
 import Circle4 from "./Circle4/Circle4";
 import Circle5 from "./Circle5/Circle5";
+import Radar from "./Radar/Radar";
 
 export default ({ className, width, height }) => {
   let opt = {
@@ -44,6 +45,10 @@ export default ({ className, width, height }) => {
       lineWidth: 2,
       anticlockwise: false,
       alpha: 0.3
+    },
+    Radar: {
+      radius: 120,
+      color: "0,255,255"
     }
   };
 
@@ -63,10 +68,11 @@ export default ({ className, width, height }) => {
 
   return (
     <css.StyledCircles
+      className={`Circles ${className}`}
       width={width}
       height={height}
-      className={`Circles ${className}`}
     >
+      <Radar className="Circle" opt={opt.Radar} />
       <Circle1 className="Circle" opt={opt.Circle1} />
       <Circle2 className="Circle" opt={opt.Circle2} />
       <Circle3 className="Circle" opt={opt.Circle3} />

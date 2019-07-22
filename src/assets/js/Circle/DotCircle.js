@@ -1,3 +1,5 @@
+import { delay } from "utils/Util";
+
 import Circle from "./Circle";
 
 var DotCircle = function(opt) {
@@ -10,9 +12,10 @@ var DotCircle = function(opt) {
 
 DotCircle.prototype = new Circle();
 
-DotCircle.prototype.drawDone = function() {
+DotCircle.prototype.drawDone = async function() {
   for (let i = 0; i < this.n; i++) {
     let start = this.start - this.length / 2 + (i * 100) / this.n;
+    await delay(70);
     this._draw(start, start + this.length);
   }
 };

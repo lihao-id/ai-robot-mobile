@@ -5,7 +5,8 @@ import store from "store/store";
 import { Provider } from "react-redux";
 
 import Home from "pages/Home/Home";
-import { GlobalStyle } from "assets/css/style/style";
+import Open from "pages/Open/Open";
+import { GlobalStyle } from "assets/css/style/Style";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <div className="App">
           <Switch>
+            <Route path="/open" component={Open} />
             <Route path="/" component={Home} />
           </Switch>
         </div>

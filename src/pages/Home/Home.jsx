@@ -1,16 +1,22 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import React, { useEffect } from "react";
 
 import * as css from "./css/Home";
 
 import Frame from "components/frame/Frame";
 
-export default function Home() {
+import { getUrlQuery } from "utils/Util";
+
+function Home({ location }) {
+  let query = getUrlQuery(location.search);
+  useEffect(() => {
+    let domain = query.domain;
+  });
+
   return (
-    <Router>
-      <css.StyledHome className="Home">
-        <Frame />
-      </css.StyledHome>
-    </Router>
+    <css.Home className="Home">
+      <Frame />
+    </css.Home>
   );
 }
+
+export default Home;
