@@ -11,7 +11,6 @@ export default function() {
       <Close className="Close" width={80} height={30} color="#00ffff" />
       <Main className="Main" />
       <Click />
-      <Click />
     </css.StyledFrame>
   );
 }
