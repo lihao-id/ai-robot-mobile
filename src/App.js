@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 
 import Home from "pages/Home/Home";
 import Open from "pages/Open/Open";
-import { GlobalStyle } from "assets/css/style/Style";
+import { GlobalStyle } from "assets/css/style/style";
 
 function App() {
   return (
