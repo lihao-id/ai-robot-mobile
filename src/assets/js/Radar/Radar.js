@@ -53,10 +53,9 @@ Radar.prototype = {
       //画雷达扫描仪
       ctx.strokeStyle = Color(1);
       var r = this.radius; //雷达扫描仪半径
-      var deg = time;
-      var newpoint = Point(r, deg);
+      //   var deg = time;
+      //   var newpoint = Point(r, deg);
       var line_deg = (time / 2) % 360;
-      // console.log(line_deg);
 
       //雷达扫描仪的扇形大小
       var line_deg_len = 100;
@@ -71,12 +70,10 @@ Radar.prototype = {
         var opacity = 1 - i / line_deg_len - 0.3;
         if (i == 0) opacity = 1;
         ctx.beginPath();
-        // ctx.fillStyle="white";
         ctx.fillStyle = Color(opacity);
         ctx.moveTo(0, 0);
         ctx.lineTo(point1.x, point1.y);
         ctx.lineTo(point2.x, point2.y);
-        // ctx.stroke();
         ctx.fill();
       }
 
@@ -86,40 +83,73 @@ Radar.prototype = {
         var obj_point = Point(obj.r, obj.deg);
 
         ctx.beginPath();
-        //   ctx.arc(obj_point.x, obj_point.y, 4, 0, 2 * Math.PI);
         ctx.arc(obj_point.x, obj_point.y, 2, 0, 2 * Math.PI); //画被被发现物体中间的小点
         ctx.fill();
 
-        ctx.strokeStyle = Color(obj.opacity);
-        var x_size = 6;
-        ctx.lineWidth = 4;
-        ctx.beginPath();
-        ctx.moveTo(obj_point.x - x_size, obj_point.y + x_size);
-        ctx.lineTo(obj_point.x + x_size, obj_point.y - x_size);
-        ctx.moveTo(obj_point.x + x_size, obj_point.y + x_size);
-        ctx.lineTo(obj_point.x - x_size, obj_point.y - x_size);
-        //   ctx.stroke();
-        ctx.fill();
+        // ctx.strokeStyle = Color(obj.opacity);
+        // var x_size = 6;
+        // ctx.lineWidth = 4;
+        // ctx.beginPath();
+        // ctx.moveTo(obj_point.x - x_size, obj_point.y + x_size);
+        // ctx.lineTo(obj_point.x + x_size, obj_point.y - x_size);
+        // ctx.moveTo(obj_point.x + x_size, obj_point.y + x_size);
+        // ctx.lineTo(obj_point.x - x_size, obj_point.y - x_size);
+        // ctx.fill();
 
-        //画被发现物体（小圆）
+        //画被发现物体
         if (Math.abs(obj.deg - line_deg) <= 1) {
           obj.opacity = 1;
         }
         obj.opacity *= 0.99;
-        //   obj.opacity *= 0.9;
 
         ctx.strokeStyle = Color(obj.opacity);
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.arc(
+
+        // let radius = 10 * (1 / (obj.opacity + 0.0001));
+        let radius = 10 * (1 / (obj.opacity + 0.0001));
+        if (radius > 30) {
+          return;
+        }
+
+        //画被发现物体的外圆
+        //创建渐变
+        let gradient = ctx.createRadialGradient(
           obj_point.x,
           obj_point.y,
-          10 * (1 / (obj.opacity + 0.0001)),
           0,
-          2 * Math.PI
+          obj_point.x,
+          obj_point.y,
+          radius
         );
-        ctx.stroke();
-        //   ctx.fill();
+        gradient.addColorStop(0, "rgba(255,255,255,0)");
+        gradient.addColorStop(0.4, "rgba(255,255,255,0)");
+        gradient.addColorStop(1, Color(0.2));
+        ctx.fillStyle = gradient;
+
+        ctx.arc(obj_point.x, obj_point.y, radius, 0, 2 * Math.PI);
+        ctx.fill();
+
+        //画被发现物体的内圆
+        if (radius > 15) {
+          let innerRadius = radius / 3;
+          //创建渐变
+          let gradient = ctx.createRadialGradient(
+            obj_point.x,
+            obj_point.y,
+            0,
+            obj_point.x,
+            obj_point.y,
+            innerRadius
+          );
+          gradient.addColorStop(0, "rgba(255,255,255,0)");
+          gradient.addColorStop(0.4, "rgba(255,255,255,0)");
+          gradient.addColorStop(1, Color(0.1));
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(obj_point.x, obj_point.y, innerRadius, 0, 2 * Math.PI);
+          ctx.fill();
+        }
       });
     };
 

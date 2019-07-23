@@ -1,12 +1,14 @@
 import React from "react";
 import * as css from "./css/FrameMain";
 
-import Center from "./FrameMainCenter/FrameMainCenter";
+import Center from "./Center/FrameMainCenter";
+import Bottom from "./Bottom/FrameMainBottom";
 
 export default () => {
   return (
-    <css.StyledFrameMain className="FrameMain">
+    <css.FrameMain className="FrameMain">
       <Center width={250} height={250} />
-    </css.StyledFrameMain>
+      <Bottom width={250} height={250} />
+    </css.FrameMain>
   );
 };

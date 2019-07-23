@@ -31,6 +31,26 @@ Rectangle.prototype = {
     //清除画板
     this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
   },
+  async _draw() {
+    const draw1DownFun = await this._draw1();
+    const draw2DownFun = await this._draw2(draw1DownFun);
+    const draw3DownFun = await this._draw3(draw2DownFun);
+    const draw4DownFun = await this._draw4(draw3DownFun);
+    const draw5DownFun = await this._draw5(draw4DownFun);
+    const draw6DownFun = await this._draw6(draw5DownFun);
+    const draw7DownFun = await this._draw7(draw6DownFun);
+    const draw8DownFun = await this._draw8(draw7DownFun);
+    await this._draw9(draw8DownFun);
+  },
+  draw() {
+    this._clear();
+    this.context.strokeStyle = this.color;
+    this.context.lineWidth = this.lineWidth;
+
+    this.context.beginPath();
+
+    this._draw();
+  },
   async _draw1() {
     let start = { x: 0, y: 0 };
     let end = { x: this.canvasWidth - this.rightTopDifferent, y: 0 };
@@ -309,25 +329,6 @@ Rectangle.prototype = {
       this.context.lineTo(end.x, end.y);
       this.context.stroke();
     };
-  },
-  async _draw() {
-    const draw1DownFun = await this._draw1();
-    const draw2DownFun = await this._draw2(draw1DownFun);
-    const draw3DownFun = await this._draw3(draw2DownFun);
-    const draw4DownFun = await this._draw4(draw3DownFun);
-    const draw5DownFun = await this._draw5(draw4DownFun);
-    const draw6DownFun = await this._draw6(draw5DownFun);
-    const draw7DownFun = await this._draw7(draw6DownFun);
-    const draw8DownFun = await this._draw8(draw7DownFun);
-    await this._draw9(draw8DownFun);
-  },
-  draw() {
-    this.context.strokeStyle = this.color;
-    this.context.lineWidth = this.lineWidth;
-
-    this.context.beginPath();
-
-    this._draw();
   }
 };
 

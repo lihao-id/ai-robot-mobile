@@ -5,8 +5,11 @@ import Rectangle from "./js/Rectangle";
 import Triangle from "./js/Triangle";
 
 import GlidingLine from "./GlidingLine/GlidingLine";
+import UpLine from "./UpLine/UpLine";
 
-export default function FrameClose({ className, width, height, color }) {
+export default function FrameClose(props) {
+  let { className, width, height, color } = props;
+
   let canvasRectangleRef = useRef(null);
   let canvasTriangleRef1 = useRef(null);
   let canvasTriangleRef2 = useRef(null);
@@ -87,6 +90,10 @@ export default function FrameClose({ className, width, height, color }) {
         />
       </css.DownTriangleAnimate>
       <css.Text color={color}>关闭</css.Text>
+      <UpLine
+        leftLine={{ width: width / 4, height: 1 }}
+        rightLine={{ width: width / 4, height: 1 }}
+      />
       <GlidingLine />
     </css.FrameClose>
   );

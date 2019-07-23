@@ -4,13 +4,23 @@ import * as css from "./css/Home";
 
 import Frame from "components/frame/Frame";
 
-import { getUrlQuery } from "utils/Util";
+import { getUrlQuery, handleDomain } from "utils/Util";
 
-function Home({ location }) {
-  let query = getUrlQuery(location.search);
+import { getUrlInfo } from "api/api";
+
+function Home(props) {
+  let { location } = props;
   useEffect(() => {
-    let domain = query.domain;
-  });
+    let query = getUrlQuery(location.search);
+    let domain = handleDomain(query.domain);
+
+    const fetchData = async ({ domain }) => {
+      let response = await getUrlInfo({ domain });
+      let urlInfo = response.data.Result;
+    };
+
+    fetchData({ domain });
+  }, [location.search]);
 
   return (
     <css.Home className="Home">

@@ -2,14 +2,11 @@ import styled from "styled-components";
 
 export const StyledFrame = styled.div`
   position: fixed;
-  /* left: 5vw;
-  top: 5vh; */
-  /* width: 90vw;
-  height: 90vh; */
-  left:0;
-  top:0;
-  width: 100vw;
-  height: 100vh;
+  width: 90vw;
+  height: 90vh;
+  left: 5vw;
+  top:5vh;
+  margin:auto;
   background-image: url('${require("./img/bg.png")}');
   background-size: 100% 100%;
   background-repeat: no-repeat;

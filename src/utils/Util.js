@@ -1,12 +1,14 @@
+//延迟
 export const delay = time => {
   return new Promise(resolve => {
     setTimeout(resolve, time);
   });
 };
 
-export const getUrlQuery = search => {
+//获取url参数
+export const getUrlQuery = url => {
   //   let url = window.location.search;
-  let url = search;
+  //   let url = search;
   let obj = {};
   let reg = /[?&][^?&]+=[^?&]+/g;
   let arr = url.match(reg);
@@ -20,4 +22,13 @@ export const getUrlQuery = search => {
     });
   }
   return obj;
+};
+
+//处理domain
+export const handleDomain = domain => {
+  let str = "www.";
+  if (domain.indexOf(str) === 0) {
+    domain = domain.substring(str.length);
+  }
+  return domain;
 };

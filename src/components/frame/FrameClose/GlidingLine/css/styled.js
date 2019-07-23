@@ -1,50 +1,36 @@
-import styled, { keyframes } from 'styled-components'
+import styled from "styled-components";
+import * as slideKeyframes from "./SlideKeyframes";
+import { LineStyle, SlideDirection } from "./Var";
 
-const slide1 = keyframes`
-  1%{left: 0;}
-  47%{left: 50%;}
-  48%{left: 50%;}
-  49%{left: -50%;}
-  50%{left: -50%;}
-  100%{left: 0;}
-`
+export const GlidingLine = styled.div``;
 
-const slide2 = keyframes`
-  1%{left: -50%;}
-  47%{left: 0;}
-  48%{left: 0;}
-  49%{left: -100%;}
-  50%{left: -100%;}
-  100%{left: -50%;}
-`
+const Line = styled.img`
+  position: absolute;
+  width: ${LineStyle.width}px;
+  top: 0;
 
-const slide3 = keyframes`
-  1%{left: 50%;}
-  47%{left: 100%;}
-  48%{left: 100%;}
-  49%{left: 0;}
-  50%{left: 0;}
-  100%{left: 50%;}
-`
-
-export const styledLine1 = styled.img`
-  animation-name: ${slide1};
   animation-duration: 2s;
   animation-iteration-count: infinite;
-`
+`;
 
-export const styledLine2 = styled.img`
-  animation-name: ${slide2};
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-`
+export const Line1 = styled(Line)`
+  animation-name: ${slideKeyframes.slide1};
 
-export const styledLine3 = styled.img`
-  animation-name: ${slide3};
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-`
+  ${SlideDirection}: ${0.5 * LineStyle.width}px;
+`;
 
-export const styledWrapper = styled.div``
+export const Line2 = styled(Line)`
+  animation-name: ${slideKeyframes.slide2};
 
-export const styledInner = styled.div``
+  ${SlideDirection}: ${-0.5 * LineStyle.width}px;
+`;
+
+export const Line3 = styled(Line)`
+  animation-name: ${slideKeyframes.slide3};
+  ${SlideDirection}: ${-1.5 * LineStyle.width}px;
+`;
+
+export const GlidingInner = styled.div`
+  position: relative;
+  width: ${1.5 * LineStyle.width}px;
+`;

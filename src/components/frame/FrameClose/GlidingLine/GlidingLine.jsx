@@ -3,48 +3,25 @@ import * as css from "./css/styled";
 
 const GlidingLine = ({ className }) => {
   return (
-    <div
-      className="gliding-line"
-      style={{
-      }}
-    >
-      <div
-        className="gliding-inner"
-        style={{
-          position: "relative",
-          width: "128px"
-        }}
-      >
-        <css.styledLine1
+    <css.GlidingLine className="gliding-line">
+      <css.GlidingInner className="gliding-inner" style={{}}>
+        <css.Line1
           src={require("./css/img/sliding.png")}
           className="gliding-img1"
           alt=""
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0
-          }}
         />
-        <css.styledLine2
+        <css.Line2
           src={require("./css/img/sliding.png")}
           alt=""
           className="gliding-img2"
-          style={{
-            position: "absolute",
-            top: 0
-          }}
         />
-        <css.styledLine3
+        <css.Line3
           src={require("./css/img/sliding.png")}
           alt=""
           className="gliding-img3"
-          style={{
-            position: "absolute",
-            top: 0
-          }}
         />
-      </div>
-    </div>
+      </css.GlidingInner>
+    </css.GlidingLine>
   );
 };
 

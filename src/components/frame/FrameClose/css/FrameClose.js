@@ -10,8 +10,11 @@ export const FrameClose = styled.button`
 
   /* transform: perspective(200px);
   transform-style: preserve-3d; */
-  &:hover {
-    cursor: pointer;
+
+  .up-line {
+    position: absolute;
+    top: 3px;
+    left: 4px;
   }
 
   .gliding-line {
