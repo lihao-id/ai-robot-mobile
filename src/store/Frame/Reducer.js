@@ -10,3 +10,12 @@ export const show = (state = false, action = {}) => {
       return state;
   }
 };
+
+export const info = (state = null, action = {}) => {
+  switch (action.type) {
+    case type.SET_INFO:
+      return action.info;
+    default:
+      return state;
+  }
+};

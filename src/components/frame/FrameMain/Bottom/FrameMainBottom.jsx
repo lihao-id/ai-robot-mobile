@@ -2,18 +2,22 @@ import React from "react";
 import * as css from "./css/FrameMainBottom";
 import Click from "./FrameClick/FrameClick";
 
-function FrameMainBottom({ className }) {
+function FrameMainBottom(props) {
+  let { className, info } = props;
+  let rightBlock1 = 42;
+  let rightBlock2 = 32;
+  let rightBlock3 = 52;
+  let rightBlock4 = 22;
 
-    
+  let rightBlockArr = [rightBlock1, rightBlock2, rightBlock3, rightBlock4];
 
-    let rightBlock1 = 42;
-    let rightBlock2 = 32;
-    let rightBlock3 = 22;
-    let rightBlock4 = 12;
-
-    function getRightBlockWidth(num){
-        let maxRightBlockWidth = 123;
-    }
+  function getRightBlockWidth(num) {
+    let maxRightBlockWidth = 123;
+    let max = Math.max(...rightBlockArr);
+    let width = (num / max) * maxRightBlockWidth;
+    width = Math.round(width);
+    return width;
+  }
   const click = {
     click1: {
       height: 60,
@@ -37,7 +41,8 @@ function FrameMainBottom({ className }) {
       },
       rightBlock1: {
         bgColor: "rgba(25,100,113,1)",
-        width: 123,
+        // width: 123,
+        width: getRightBlockWidth(rightBlock1),
         animate1: {
           duration: 1,
           delay: 2.9
@@ -53,7 +58,7 @@ function FrameMainBottom({ className }) {
       },
       rightBlock2: {
         bgColor: "rgba(4,22,43,1)",
-        width: 103,
+        width: getRightBlockWidth(rightBlock2),
         animate1: {
           duration: 1,
           delay: 2.6
@@ -102,7 +107,7 @@ function FrameMainBottom({ className }) {
       },
       rightBlock1: {
         bgColor: "rgba(25,100,113,1)",
-        width: 83,
+        width: getRightBlockWidth(rightBlock3),
         animate1: {
           duration: 1,
           delay: 2.5
@@ -118,7 +123,7 @@ function FrameMainBottom({ className }) {
       },
       rightBlock2: {
         bgColor: "rgba(4,22,43,1)",
-        width: 63,
+        width: getRightBlockWidth(rightBlock4),
         animate1: {
           duration: 1,
           delay: 2
@@ -148,8 +153,14 @@ function FrameMainBottom({ className }) {
   };
   return (
     <css.FrameMainBottom className={`FrameMainBottom ${className}`}>
-      <Click style={click.click1} />
-      <Click style={click.click2} />
+      <Click
+        style={click.click1}
+        data={{ num1: rightBlock1, num2: rightBlock2 }}
+      />
+      <Click
+        style={click.click2}
+        data={{ num1: rightBlock3, num2: rightBlock4 }}
+      />
     </css.FrameMainBottom>
   );
 }

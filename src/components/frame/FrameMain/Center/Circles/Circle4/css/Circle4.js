@@ -1,6 +1,9 @@
 import styled, { keyframes } from "styled-components";
 
-export const StyledCircle4 = styled.div``;
+export const StyledCircle4 = styled.div`
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
+`;
 
 export const Circle = styled.canvas`
   position: absolute;

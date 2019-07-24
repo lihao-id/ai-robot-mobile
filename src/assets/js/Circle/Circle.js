@@ -90,7 +90,7 @@ Circle.prototype = {
         this.currentEnd >= this.start + 50 &&
         this.currentEnd < this.start + 75
       ) {
-        time = time;
+        // time = time;
       } else {
         time = time + 1;
       }

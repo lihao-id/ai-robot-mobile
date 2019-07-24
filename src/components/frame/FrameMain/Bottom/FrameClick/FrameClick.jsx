@@ -1,9 +1,9 @@
-import React, { useEffect, Component } from "react";
+import React, { useEffect } from "react";
 import * as css from "./css/FrameClick";
 import { useCountUp } from "react-countup";
 
 const FrameClick = props => {
-  const { className, style } = props;
+  const { className, style, data } = props;
   const {
     height,
     rightBlock1,
@@ -18,14 +18,14 @@ const FrameClick = props => {
   let { countUp: countUp1, start: startCountUp1 } = useCountUp({
     delay: 1.5,
     start: -20000,
-    end: 42,
+    end: data.num1,
     duration: 6
   });
 
   let { countUp: countUp2, start: startCountUp2 } = useCountUp({
     delay: 1.5,
     start: -20000,
-    end: 42,
+    end: data.num2,
     duration: 6
   });
 
@@ -71,7 +71,7 @@ const FrameClick = props => {
             bdColor={rightBlock1.bgColor}
             animate1={rightBlockTextWrapper1.animate1}
           >
-            <css.RightBlockText>{countUp1}K</css.RightBlockText>
+            <css.RightBlockText>{countUp1}</css.RightBlockText>
           </css.RightBlockTextWrapper>
         </css.RightBlock>
         <css.RightBlock
@@ -85,7 +85,7 @@ const FrameClick = props => {
             bdColor={rightBlock1.bgColor}
             animate1={rightBlockTextWrapper2.animate1}
           >
-            <css.RightBlockText>{countUp2}K</css.RightBlockText>
+            <css.RightBlockText>{countUp2}</css.RightBlockText>
           </css.RightBlockTextWrapper>
         </css.RightBlock>
       </css.Right>

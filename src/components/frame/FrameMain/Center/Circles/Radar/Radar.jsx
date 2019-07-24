@@ -15,7 +15,8 @@ function Radar({ className, opt }) {
 
     let radar = new RadarObj(option);
     radar.draw();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <css.Radar

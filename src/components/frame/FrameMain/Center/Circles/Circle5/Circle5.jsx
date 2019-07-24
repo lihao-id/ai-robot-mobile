@@ -52,9 +52,9 @@ function Circle5({ opt, className }) {
 
   return (
     <css.StyledCircle5
+      className={`Circle5 ${className}`}
       width={width}
       height={height}
-      className={`Circle5 ${className}`}
     >
       <css.Circle ref={ref1} width={width} height={height} />
       <css.Circle ref={ref2} width={width} height={height} />

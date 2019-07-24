@@ -11,3 +11,10 @@ export const closeFrame = () => {
     type: type.CLOSE_FRAME
   };
 };
+
+export const setInfo = info => {
+  return {
+    type: type.SET_INFO,
+    info: info
+  };
+};

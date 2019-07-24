@@ -68,7 +68,7 @@ Radar.prototype = {
         var point1 = Point(r, deg1);
         var point2 = Point(r, deg2);
         var opacity = 1 - i / line_deg_len - 0.3;
-        if (i == 0) opacity = 1;
+        if (i === 0) opacity = 1;
         ctx.beginPath();
         ctx.fillStyle = Color(opacity);
         ctx.moveTo(0, 0);
