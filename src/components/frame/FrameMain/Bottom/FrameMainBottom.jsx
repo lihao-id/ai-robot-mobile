@@ -3,6 +3,17 @@ import * as css from "./css/FrameMainBottom";
 import Click from "./FrameClick/FrameClick";
 
 function FrameMainBottom({ className }) {
+
+    
+
+    let rightBlock1 = 42;
+    let rightBlock2 = 32;
+    let rightBlock3 = 22;
+    let rightBlock4 = 12;
+
+    function getRightBlockWidth(num){
+        let maxRightBlockWidth = 123;
+    }
   const click = {
     click1: {
       height: 60,
