@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from "store/store";
@@ -10,17 +10,19 @@ import { GlobalStyle } from "assets/css/style/style";
 
 function App() {
   return (
-    <Provider store={store}>
+    <Fragment>
       <GlobalStyle />
-      <Router>
-        <div className="App">
-          <Switch>
-            <Route path="/open" component={Open} />
-            <Route path="/" component={Home} />
-          </Switch>
-        </div>
-      </Router>
-    </Provider>
+      <Provider store={store}>
+        <Router basename="/mobile-ai-robot">
+          <div className="App">
+            <Switch>
+              <Route path="/open" component={Open} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </div>
+        </Router>
+      </Provider>
+    </Fragment>
   );
 }
 

@@ -2,20 +2,20 @@ import { keyframes } from "styled-components";
 
 export const keyframe1 = props => keyframes`
     0%{
-        width:0;
-        transform:translateX(0);
+        /* width:0; */
+        /* transform:translateX(0); */
     }
 
     100%{
-        width:0;
+        /* width:0; */
         transform:translateX(${-props.translateX}px);
     }
 `;
 
 export const keyframe2 = props => keyframes`
     0%{
-        width:0;
-        transform:translateX(${-props.translateX}px);
+        /* width:0; */
+        /* transform:translateX(${-props.translateX}px); */
     }
 
     /* ${props.translateX}%{
@@ -24,7 +24,7 @@ export const keyframe2 = props => keyframes`
     } */
 
     100%{
-        width:${props.width}px;
+        /* width:${props.width}px; */
         transform:translateX(20px);
     }
 `;

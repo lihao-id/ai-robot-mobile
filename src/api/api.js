@@ -21,23 +21,36 @@ export const test = () => {
 
 //获取url信息
 export const getUrlInfo = ({ domain }) => {
-  Mock.mock(RegExp(BASE_URL + "/count/all/info.*"), "get", options => {
-    return Mock.mock({
-      Result: {
-        "360Rank|1-1000": 1,
-        "baiduRank|1-1000": 1,
-        "sougouRank|1-1000": 1,
-        "clickTimes|1-9999": 1,
-        "totalGlanceTime|1-99999": 1
-      }
-    });
-  });
+//   Mock.mock(RegExp(BASE_URL + "/count/all/info.*"), "get", options => {
+//     return Mock.mock({
+//       Result: {
+//         "360Rank|1-1000": 1,
+//         "baiduRank|1-1000": 1,
+//         "sougouRank|1-1000": 1,
+//         "clickTimes|1-9999": 1,
+//         "totalGlanceTime|1-99999": 1
+//       }
+//     });
+//   });
 
   return http({
     method: "get",
     url: BASE_URL + "/count/all/info",
     params: {
       url: domain
+    }
+  });
+};
+
+//获取音效
+export const GET_VOICE = BASE_URL + "/admin/audio/play/path";
+export const getVoice = ({ userId, url }) => {
+  return http({
+    method: "get",
+    url: GET_VOICE,
+    params: {
+      url: url,
+      userId: userId
     }
   });
 };

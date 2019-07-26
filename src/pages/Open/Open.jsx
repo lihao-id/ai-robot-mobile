@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import * as css from "./css/Open";
 
 function Open() {
@@ -6,7 +6,11 @@ function Open() {
     let data = { eventName: "open" };
     window.parent.postMessage(data, "*");
   }
-  return <css.Open onClick={doOpenFrame} />;
+  return (
+    <Fragment>
+      <css.Open onClick={doOpenFrame} />
+    </Fragment>
+  );
 }
 
 export default Open;
