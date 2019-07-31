@@ -5,11 +5,12 @@ import Main from "./FrameMain/FrameMain";
 import Close from "./FrameClose/FrameClose";
 
 export default function(props) {
-  let { info } = props;
+  let { info, domain } = props;
   return (
-    <css.StyledFrame className="Frame">
+    <css.Frame className="Frame">
+      <img className="bg-1" src={require("./css/img/bg-1.jpg")} alt="" />
       <Close className="Close" width={80} height={30} color="#00ffff" />
-      <Main className="Main" info={info} />
-    </css.StyledFrame>
+      <Main domain={domain} className="Main" info={info} />
+    </css.Frame>
   );
 }

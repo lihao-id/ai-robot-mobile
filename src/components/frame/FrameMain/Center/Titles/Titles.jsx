@@ -14,10 +14,10 @@ function AnimateSpanList({ text, delay, right }) {
   ));
 }
 
-function Titles({ width, height, className }) {
+function Titles(props) {
+  let { width, height, className, domain } = props;
   const h1 = "5g商城";
   const h2 = "智能网络服务";
-  const url = "www.shangtong.com";
 
   return (
     <css.StyledTitles
@@ -33,7 +33,7 @@ function Titles({ width, height, className }) {
           <AnimateSpanList delay={0.1} text={h2} />
         </css.H2>
         <css.Url>
-          <AnimateSpanList right={true} delay={0.3} text={url} />
+          <AnimateSpanList right={true} delay={0.3} text={domain} />
         </css.Url>
       </css.TitleWrapper>
     </css.StyledTitles>

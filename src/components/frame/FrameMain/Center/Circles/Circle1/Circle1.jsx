@@ -1,12 +1,12 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import * as css from "./css/Circle1";
 import Circle from "assets/js/Circle/Circle";
-import RotateCircle from "assets/js/Circle/RotateCircle";
 
 function Circle1({ opt, className }) {
-  let ref = useRef(null);
-
   let { width, height } = opt;
+
+  let ref = useRef(null);
+  const [rotate, setRotate] = useState("");
 
   useEffect(() => {
     let option = {
@@ -14,16 +14,21 @@ function Circle1({ opt, className }) {
       element: ref.current
     };
 
-    let circle =
-      opt.anticlockwise !== undefined
-        ? new RotateCircle(option)
-        : new Circle(option);
+    let circle = new Circle(option);
     circle.drawDone();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setRotate("rotate");
+    }, 200);
+  }, []);
+
   return (
     <css.StyledCircle1
       ref={ref}
-      className={`Circle1 ${className}`}
+      className={`Circle1 ${rotate} ${className}`}
       width={`${width}px`}
       height={`${height}px`}
     />

@@ -15,14 +15,14 @@ export default ({ className, width, height }) => {
       color: "#00ffff",
       lineWidth: 1,
       lineDash: [2, 4],
-      anticlockwise: true,
+    //   anticlockwise: true,
       alpha: 0.6
     },
     Circle2: {
       radius: 65,
       color: "#6262a4",
       lineWidth: 35,
-      anticlockwise: true,
+    //   anticlockwise: true,
       length: 33,
       alpha: 0.2
     },
@@ -43,7 +43,7 @@ export default ({ className, width, height }) => {
       radius: 120,
       color: "#44e8fb",
       lineWidth: 2,
-      anticlockwise: false,
+    //   anticlockwise: false,
       alpha: 0.3
     },
     Radar: {

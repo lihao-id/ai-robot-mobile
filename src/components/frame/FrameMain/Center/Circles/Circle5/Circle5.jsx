@@ -1,12 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as css from "./css/Circle5";
 import Circle from "assets/js/Circle/Circle";
-import RotateCircle from "assets/js/Circle/RotateCircle";
 
-function Circle5({ opt, className }) {
+function Circle5(props) {
+  let { opt, className } = props;
   let ref1 = useRef(null);
   let ref2 = useRef(null);
   let ref3 = useRef(null);
+  const [rotate, setRotate] = useState("");
 
   let { width, height } = opt;
 
@@ -32,27 +33,25 @@ function Circle5({ opt, className }) {
       start: 69
     };
 
-    let circle1 =
-      opt.anticlockwise !== undefined
-        ? new RotateCircle(option1)
-        : new Circle(option1);
-    let circle2 =
-      opt.anticlockwise !== undefined
-        ? new RotateCircle(option2)
-        : new Circle(option2);
-    let circle3 =
-      opt.anticlockwise !== undefined
-        ? new RotateCircle(option3)
-        : new Circle(option3);
+    let circle1 = new Circle(option1);
+    let circle2 = new Circle(option2);
+    let circle3 = new Circle(option3);
 
     circle1.drawDone();
     circle2.drawDone();
     circle3.drawDone();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setRotate("rotate");
+    }, 200);
+  }, []);
 
   return (
     <css.StyledCircle5
-      className={`Circle5 ${className}`}
+      className={`Circle5 ${rotate} ${className}`}
       width={width}
       height={height}
     >

@@ -43,6 +43,16 @@ export const onOpenFrame = callback => {
   });
 };
 
+//doCloseFrame
+export const doCloseFrame = callback => {
+  window.addEventListener("message", function(event) {
+    let data = event.data;
+    if (data.eventName === "do-close") {
+      callback();
+    }
+  });
+};
+
 //将数字用“,”分隔
 export const formatNumber = value => {
   let num = new Number(value);

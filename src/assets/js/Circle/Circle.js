@@ -103,44 +103,6 @@ Circle.prototype = {
     if (this.afterDrawDone) {
       this.afterDrawDone();
     }
-
-    // (function f(time) {
-    //   if (_this.canDraw() === false) {
-    //     if (_this.afterDrawDone) {
-    //       _this.afterDrawDone();
-    //     }
-    //     return;
-    //   }
-
-    //   setTimeout(function() {
-    //     //控制速度
-    //     if (
-    //       _this.currentEnd >= _this.start &&
-    //       _this.currentEnd < _this.start + 25
-    //     ) {
-    //       time = (_time * 4) / 3;
-    //     } else if (
-    //       _this.currentEnd >= _this.start + 25 &&
-    //       _this.currentEnd < _this.start + 50
-    //     ) {
-    //       time = (_time * 3) / 4;
-    //     } else if (
-    //       _this.currentEnd >= _this.start + 50 &&
-    //       _this.currentEnd < _this.start + 75
-    //     ) {
-    //       time = _time;
-    //     } else {
-    //       time = time + 1;
-    //     }
-
-    //     //清除画板
-    //     _this.clear();
-
-    //     _this._draw(_this.start, ++_this.currentEnd);
-
-    //     f(time, _this);
-    //   }, time);
-    // })();
   }
 };
 

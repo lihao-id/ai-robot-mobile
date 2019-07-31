@@ -64,7 +64,7 @@ const FrameClick = props => {
           src={require("./css/img/pentagon/bg.png")}
         />
       </css.Center>
-      <css.Right width={rightWidth}>
+      <css.Right width={document.body.clientWidth}>
         <css.RightBlock
           bgColor={rightBlock1.bgColor}
           width={rightBlock1.width}

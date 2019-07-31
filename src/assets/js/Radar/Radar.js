@@ -36,12 +36,16 @@ Radar.prototype = {
       });
 
     const innerDraw = () => {
-      time += 1;
+      //   time += 1;
+      time += 2;
 
-      ctx.fillStyle = "#111";
-      ctx.beginPath();
-      ctx.rect(-2000, -2000, 4000, 4000);
-      ctx.fill();
+      //   ctx.fillStyle = "#111";
+      //   ctx.beginPath();
+      //   ctx.rect(-2000, -2000, 4000, 4000);
+      //   ctx.fill();
+
+      //清除
+      ctx.clearRect(-2000, -2000, 4000, 4000);
 
       ctx.strokeStyle = "rgba(255,255,255,0.1)";
       ctx.moveTo(-ww / 2, 0);

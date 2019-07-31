@@ -27,15 +27,17 @@ export const ChineseTitle = styled(Title)``;
 
 export const EnglishTitle = styled(Title)``;
 
+const leftWidth = 70;
 export const Left = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
   position: relative;
-  width: 70px;
+  width: ${leftWidth}px;
   height: 100%;
 `;
 
+const centerWidth = 30;
 export const Center = styled.div`
   height: 100%;
 `;
@@ -45,7 +47,8 @@ export const Right = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  width: ${props => props.width}px;
+  width: ${props => props.width - leftWidth - centerWidth - 40}px;
+
   overflow: hidden;
   > *:not(:first-child) {
     margin-top: 8px;
@@ -87,7 +90,7 @@ export const LeftLine = styled.div`
 `;
 
 export const CenterPentagon = styled.img`
-  width: 30px;
+  width: ${centerWidth}px;
   height: 100%;
   display: block;
   opacity: 0;
@@ -102,10 +105,11 @@ const rightBlockTextWrapperStyle = {
   width: 12
 };
 
+const rightBlockHeight = 20;
 export const RightBlock = styled.div`
   position: relative;
   z-index: -1;
-  height: 20px;
+  height: ${rightBlockHeight}px;
   width: ${props => props.width}px;
   transform: translateX(
     ${props => -rightBlockTextWrapperStyle.width - props.width}px
@@ -134,6 +138,7 @@ export const RightBlockInnerText = styled.span`
   position: absolute;
   left: 1px;
   font-size: 10px;
+  line-height: ${rightBlockHeight}px;
 `;
 
 export const RightBlockTextWrapper = styled.div`

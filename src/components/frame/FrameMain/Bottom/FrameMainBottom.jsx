@@ -12,7 +12,7 @@ function FrameMainBottom(props) {
   let rightBlock2Num;
   let rightBlock3Num;
   let rightBlock4Num;
-  let minRightBlockWidth = 50;
+  let minRightBlockWidth = 60;
   let maxRightBlockWidth = 50;
 
   if (info) {
@@ -90,7 +90,7 @@ function FrameMainBottom(props) {
           }
         },
         rightBlock2: {
-          bgColor: "rgba(4,22,43,1)",
+          bgColor: "rgb(42, 65, 97)",
           width: getRightBlockWidth(rightBlock2Num),
           animate1: {
             duration: 1,
@@ -155,7 +155,7 @@ function FrameMainBottom(props) {
           }
         },
         rightBlock2: {
-          bgColor: "rgba(4,22,43,1)",
+          bgColor: "rgb(42, 65, 97)",
           width: getRightBlockWidth(rightBlock4Num),
           animate1: {
             duration: 1,

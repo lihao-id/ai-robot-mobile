@@ -54,6 +54,7 @@ export default function FrameClose(props) {
     var data = { eventName: "close" };
     window.parent.postMessage(data, "*");
   }
+
   return (
     <css.FrameClose
       className={`FrameClose ${className}`}
