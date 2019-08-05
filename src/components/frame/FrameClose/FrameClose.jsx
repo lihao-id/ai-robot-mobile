@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import * as css from "./css/FrameClose";
+import * as Util from "utils/Util";
 
 import Rectangle from "./js/Rectangle";
 import Triangle from "./js/Triangle";
@@ -50,17 +51,12 @@ export default function FrameClose(props) {
     triangle2.draw();
   });
 
-  function closeFrame() {
-    var data = { eventName: "close" };
-    window.parent.postMessage(data, "*");
-  }
-
   return (
     <css.FrameClose
       className={`FrameClose ${className}`}
       width={width}
       height={height}
-      onClick={closeFrame}
+      onClick={Util.closeFrame}
     >
       <css.RectangleCanvas
         ref={canvasRectangleRef}

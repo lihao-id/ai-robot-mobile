@@ -33,7 +33,7 @@ export const handleDomain = domain => {
   return domain;
 };
 
-//openFrame
+//监听openFrame
 export const onOpenFrame = callback => {
   window.addEventListener("message", function(event) {
     let data = event.data;
@@ -43,14 +43,16 @@ export const onOpenFrame = callback => {
   });
 };
 
-//doCloseFrame
-export const doCloseFrame = callback => {
-  window.addEventListener("message", function(event) {
-    let data = event.data;
-    if (data.eventName === "do-close") {
-      callback();
-    }
-  });
+//触发closeFrame
+export const closeFrame = () => {
+  var data = { eventName: "close" };
+  window.parent.postMessage(data, "*");
+};
+
+//触发touchStart
+export const touchStart = () => {
+  var data = { eventName: "touchStart" };
+  window.parent.postMessage(data, "*");
 };
 
 //将数字用“,”分隔
